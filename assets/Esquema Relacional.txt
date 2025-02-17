@@ -1,0 +1,28 @@
+=============================
+Esquema Relacional SISService
+=============================
+
+Setor (codSetor, nomeSetor, CPFgerente)
+   CPFgerente referencia Funcionario
+
+Funcionário (CPF, RG, dataNascimento, email, nome, dataInicio, dataFinal, login, senha, tipo, uf, cidade, rua, numero, bairro, CEP,codSetor)
+   codSetor referencia Setor
+
+funcionárioTelefone (CPF, telefone)
+   CPF referencia Funcionario
+
+Contrato (numeroContrato, descrição, dataEncerramento, valorContrato, dataInicio, codSetor, cnpjCliente)
+   codSetor referencia setor 
+   cnpjCliente referencia cliente
+
+Cliente (CNPJ, nomeCliente, email, login, senha, statusLogin, cidade, uf, rua, numero, bairro, CEP )
+
+clienteTelefone(CNPJ, telefone)
+   CPNJ referencia cliente
+
+Chamado (codChamado, numeroContrato, dataHoraChamado, providenciaTomada, dataHoraEncerramento, descrição)
+   numeroContrato referencia Contrato
+
+Trabalha_para (CPF, numeroContrato, dataInicio, dataFinal)
+   CPF referencia funcionário
+   numeroContrato referencia contrato
